@@ -1,0 +1,37 @@
+<div class="fc-dashboard">
+
+  <section class="fc-app-detail-hero">
+    <div class="fc-app-detail-icon">
+      <img src="{{icon}}" alt="">
+    </div>
+
+    <div class="fc-app-detail-content">
+      <p class="fc-kicker">Application Flux Croisés</p>
+      <h1>{{name}}</h1>
+      <p>{{{description}}}</p>
+
+      <div class="fc-app-detail-actions">
+        <a href="{{url}}" class="btn btn-primary">Ouvrir l’application</a>
+        <a href="/applications" class="btn btn-light">Retour aux applications</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="fc-cards">
+    <div class="fc-card">
+      <strong>Statut</strong>
+      <span>{{#locked}}Accès réservé{{/locked}}{{^locked}}Public{{/locked}}</span>
+    </div>
+
+    <div class="fc-card">
+      <strong>Documentation</strong>
+      <span>Guides, tutoriels et aide à venir.</span>
+    </div>
+
+    <div class="fc-card">
+      <strong>Support</strong>
+      <span>Besoin d’aide ? Consultez les ressources Flux Croisés.</span>
+    </div>
+  </section>
+
+</div>

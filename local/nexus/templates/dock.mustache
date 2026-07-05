@@ -1,0 +1,10 @@
+<section class="fc-dock-wrap">
+  <div class="fc-dock">
+    {{#applications}}
+      <a href="{{url}}" class="fc-dock-item {{#locked}}fc-locked{{/locked}}" title="{{description}}">
+        <img src="{{icon}}" alt="">
+        <span>{{name}}</span>
+      </a>
+    {{/applications}}
+  </div>
+</section>
