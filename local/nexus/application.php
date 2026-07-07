@@ -16,6 +16,7 @@ $PAGE->set_context($context);
 $PAGE->set_url(new moodle_url('/local/nexus/application.php', ['slug' => $slug]));
 $PAGE->set_title(format_string($app->name));
 $PAGE->set_heading(format_string($app->name));
+$PAGE->requires->css(new moodle_url('/local/nexus/styles.css'));
 
 $data = [
     'name' => format_string($app->name),
@@ -23,6 +24,13 @@ $data = [
     'icon' => $app->icon,
     'url' => $app->url,
     'visibility' => $app->visibility,
+    'version' => s($app->version ?? ''),
+    'status' => get_string('status_' . ($app->status ?? 'stable'), 'local_nexus'),
+    'category' => s($app->category ?? ''),
+    'color' => s($app->color ?? ''),
+    'hasversion' => !empty($app->version),
+    'hascategory' => !empty($app->category),
+    'hascolor' => !empty($app->color),
     'locked' => $app->visibility !== 'public',
 ];
 

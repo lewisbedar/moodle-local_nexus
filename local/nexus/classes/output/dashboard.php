@@ -19,6 +19,10 @@ class dashboard implements renderable, templatable {
                 'url' => $app->url,
                 'description' => $app->description,
                 'locked' => $app->locked,
+                'version' => $app->version,
+                'status' => $app->status,
+                'category' => $app->category,
+                'color' => $app->color,
             ];
         }
 

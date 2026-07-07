@@ -11,8 +11,8 @@
       <p>{{{description}}}</p>
 
       <div class="fc-app-detail-actions">
-        <a href="{{url}}" class="btn btn-primary">Ouvrir l’application</a>
-        <a href="/applications" class="btn btn-light">Retour aux applications</a>
+        <a href="{{url}}" class="btn btn-primary">{{#str}}openapplication, local_nexus{{/str}}</a>
+        <a href="/applications" class="btn btn-light">{{#str}}backtoapplications, local_nexus{{/str}}</a>
       </div>
     </div>
   </section>
@@ -20,7 +20,7 @@
   <section class="fc-cards">
     <div class="fc-card">
       <strong>Statut</strong>
-      <span>{{#locked}}Accès réservé{{/locked}}{{^locked}}Public{{/locked}}</span>
+      <span>{{#locked}}Accès réservé{{/locked}}{{^locked}}Public{{/locked}}{{#hasversion}} · {{#str}}version, local_nexus{{/str}} {{version}}{{/hasversion}}{{#hascategory}} · {{category}}{{/hascategory}}</span>
     </div>
 
     <div class="fc-card">

@@ -17,7 +17,9 @@
 
         <div class="fc-app-content">
           <h2>{{name}}</h2>
+          {{#hascategory}}<p class="fc-app-category">{{category}}</p>{{/hascategory}}
           <p>{{{description}}}</p>
+          {{#hasversion}}<p class="fc-app-version">{{#str}}version, local_nexus{{/str}} {{version}}</p>{{/hasversion}}
 
           <span class="fc-app-badge">
             {{#locked}}Accès réservé{{/locked}}
@@ -25,7 +27,7 @@
           </span>
 
 <a href="/applications/{{slug}}" class="btn btn-primary fc-app-button">
-  Découvrir
+  {{#str}}discover, local_nexus{{/str}}
 </a>
         </div>
       </article>

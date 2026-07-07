@@ -11,7 +11,7 @@ class manager {
 
         $records = $DB->get_records(
             'local_nexus_applications',
-            ['enabled' => 1],
+            ['enabled' => 1, 'showdock' => 1],
             'sortorder ASC, name ASC'
         );
 
@@ -23,7 +23,11 @@ class manager {
                 $record->icon ?? '',
                 $record->url,
                 $record->description ?? '',
-                $record->visibility !== 'public'
+                $record->visibility !== 'public',
+                $record->version ?? '',
+                $record->status ?? 'stable',
+                $record->category ?? '',
+                $record->color ?? ''
             );
         }
 

@@ -1,0 +1,318 @@
+:root {
+  --fc-blue: #2563eb;
+  --fc-purple: #7c3aed;
+  --fc-dark: #111827;
+  --fc-bg: #f8fafc;
+  --fc-text: #1f2937;
+  --fc-muted: #6b7280;
+  --fc-border: #e5e7eb;
+  --fc-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --fc-shadow-strong: 0 24px 60px rgba(15, 23, 42, 0.16);
+}
+
+.fc-dashboard {
+  color: var(--fc-text);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0 auto;
+  max-width: 1180px;
+  padding: 1rem 0 3rem;
+}
+
+.fc-hero,
+.fc-app-detail-hero {
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), transparent 32rem),
+    linear-gradient(135deg, #ffffff 0%, var(--fc-bg) 100%);
+  border: 1px solid var(--fc-border);
+  border-radius: 1.5rem;
+  box-shadow: var(--fc-shadow);
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.fc-hero-large {
+  min-height: 22rem;
+  align-items: center;
+  display: flex;
+}
+
+.fc-hero-content {
+  max-width: 42rem;
+}
+
+.fc-kicker,
+.fc-app-category,
+.fc-app-version {
+  color: var(--fc-purple);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.fc-hero h1,
+.fc-app-detail-content h1 {
+  color: var(--fc-dark);
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+}
+
+.fc-hero p,
+.fc-app-detail-content p,
+.fc-app-content p,
+.fc-card span {
+  color: var(--fc-muted);
+}
+
+.fc-hero-actions,
+.fc-app-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.fc-dashboard .btn-primary,
+.local-nexus-manage-apps .btn-primary {
+  background: linear-gradient(135deg, var(--fc-blue), var(--fc-purple));
+  border-color: transparent;
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.22);
+}
+
+.fc-dashboard .btn-primary:hover,
+.fc-dashboard .btn-primary:focus,
+.local-nexus-manage-apps .btn-primary:hover,
+.local-nexus-manage-apps .btn-primary:focus {
+  background: linear-gradient(135deg, #1d4ed8, #6d28d9);
+  border-color: transparent;
+}
+
+.fc-dashboard .btn-light {
+  background: #ffffff;
+  border-color: var(--fc-border);
+  color: var(--fc-dark);
+}
+
+.fc-dock-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.fc-dock {
+  align-items: stretch;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--fc-border);
+  border-radius: 1.25rem;
+  box-shadow: var(--fc-shadow);
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  padding: 0.75rem;
+  width: min(100%, 58rem);
+}
+
+.fc-dock-item {
+  align-items: center;
+  border-radius: 1rem;
+  color: var(--fc-text);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 6rem;
+  padding: 0.8rem;
+  text-align: center;
+  text-decoration: none;
+  transition: background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.fc-dock-item:hover,
+.fc-dock-item:focus {
+  background: var(--fc-bg);
+  box-shadow: var(--fc-shadow);
+  color: var(--fc-dark);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.fc-dock-item img,
+.fc-app-icon img,
+.fc-app-detail-icon img {
+  display: block;
+  height: 3rem;
+  object-fit: contain;
+  width: 3rem;
+}
+
+.fc-dock-item span {
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.fc-locked {
+  opacity: 0.72;
+}
+
+.fc-cards,
+.fc-app-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.fc-card,
+.fc-app-card {
+  background: #ffffff;
+  border: 1px solid var(--fc-border);
+  border-radius: 1.25rem;
+  box-shadow: var(--fc-shadow);
+  color: var(--fc-text);
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: box-shadow 160ms ease, transform 160ms ease;
+}
+
+.fc-card:hover,
+.fc-card:focus,
+.fc-app-card:hover,
+.fc-app-card:focus-within {
+  box-shadow: var(--fc-shadow-strong);
+  color: var(--fc-text);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.fc-card strong {
+  color: var(--fc-dark);
+  display: block;
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
+}
+
+.fc-app-grid {
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.fc-app-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.fc-app-card-locked {
+  background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
+}
+
+.fc-app-icon,
+.fc-app-detail-icon {
+  align-items: center;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(124, 58, 237, 0.12));
+  border-radius: 1rem;
+  display: inline-flex;
+  height: 4.5rem;
+  justify-content: center;
+  width: 4.5rem;
+}
+
+.fc-app-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.fc-app-content h2 {
+  color: var(--fc-dark);
+  font-size: 1.35rem;
+  margin: 0;
+}
+
+.fc-app-category,
+.fc-app-version {
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.fc-app-badge {
+  align-self: flex-start;
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 999px;
+  color: var(--fc-blue);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+}
+
+.fc-app-button {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.fc-app-detail-hero {
+  align-items: center;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: auto 1fr;
+}
+
+.fc-app-detail-icon {
+  border-radius: 1.5rem;
+  height: 7rem;
+  width: 7rem;
+}
+
+.fc-app-detail-icon img {
+  height: 4.5rem;
+  width: 4.5rem;
+}
+
+.local-nexus-manage-apps {
+  --fc-admin-row-hover: rgba(37, 99, 235, 0.04);
+}
+
+.local-nexus-manage-apps .generaltable {
+  background: #ffffff;
+  border: 1px solid var(--fc-border);
+  border-radius: 1rem;
+  box-shadow: var(--fc-shadow);
+  overflow: hidden;
+}
+
+.local-nexus-manage-apps .generaltable th {
+  color: var(--fc-dark);
+  white-space: nowrap;
+}
+
+.local-nexus-manage-apps .generaltable tbody tr:hover {
+  background: var(--fc-admin-row-hover);
+}
+
+@media (max-width: 767.98px) {
+  .fc-dashboard {
+    gap: 1.25rem;
+    padding-bottom: 2rem;
+  }
+
+  .fc-hero,
+  .fc-app-detail-hero {
+    border-radius: 1rem;
+    padding: 1.25rem;
+  }
+
+  .fc-hero-large {
+    min-height: 0;
+  }
+
+  .fc-app-detail-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .fc-dock {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
