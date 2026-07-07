@@ -38,7 +38,7 @@ $news = [];
 foreach ($records as $record) {
     $news[] = [
         'title' => format_string($record->title),
-        'summary' => format_text($record->summary),
+        'summary' => format_text($record->summary, FORMAT_HTML),
         'sortorder' => (int) $record->sortorder,
         'publishedlabel' => $record->published ? get_string('yes') : get_string('no'),
         'editurl' => (new moodle_url('/local/nexus/edit_news.php', ['id' => $record->id]))->out(false),

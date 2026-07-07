@@ -22,7 +22,7 @@ if ($mform->is_cancelled()) {
 if ($data = $mform->get_data()) {
     $record = new stdClass();
     $record->title = $data->title;
-    $record->summary = $data->summary ?? '';
+    $record->summary = $data->summary_editor['text'] ?? '';
     $record->url = $data->url ?? '';
     $record->sortorder = (int) $data->sortorder;
     $record->published = !empty($data->published) ? 1 : 0;
@@ -41,6 +41,10 @@ if ($data = $mform->get_data()) {
 
 if ($id) {
     $news = $DB->get_record('local_nexus_news', ['id' => $id], '*', MUST_EXIST);
+    $news->summary_editor = [
+        'text' => $news->summary ?? '',
+        'format' => FORMAT_HTML,
+    ];
     $mform->set_data($news);
 }
 

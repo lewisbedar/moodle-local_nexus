@@ -16,8 +16,12 @@ class news_form extends \moodleform {
         $mform->setType('title', PARAM_TEXT);
         $mform->addRule('title', null, 'required');
 
-        $mform->addElement('textarea', 'summary', get_string('newssummary', 'local_nexus'), ['rows' => 4, 'cols' => 60]);
-        $mform->setType('summary', PARAM_TEXT);
+        $mform->addElement('editor', 'summary_editor', get_string('newssummary', 'local_nexus'), null, [
+            'maxfiles' => 0,
+            'noclean' => false,
+            'trusttext' => false,
+        ]);
+        $mform->setType('summary_editor', PARAM_RAW);
 
         $mform->addElement('text', 'url', get_string('newsurl', 'local_nexus'));
         $mform->setType('url', PARAM_URL);

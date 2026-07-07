@@ -43,7 +43,7 @@ class dashboard implements renderable, templatable {
         foreach (news_service::get_latest() as $news) {
             $newsitems[] = [
                 'title' => format_string($news->title),
-                'summary' => format_text($news->summary),
+                'summary' => format_text($news->summary, FORMAT_HTML),
                 'url' => $news->url ?? '',
                 'hasurl' => !empty($news->url),
             ];
