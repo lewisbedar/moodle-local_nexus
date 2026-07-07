@@ -1,3 +1,4 @@
+<?php
 namespace local_nexus\local;
 
 use local_nexus\persistent\application;

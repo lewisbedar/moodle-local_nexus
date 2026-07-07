@@ -6,8 +6,8 @@ if ($hassiteconfig) {
         'localplugins',
         new admin_externalpage(
             'local_nexus_applications',
-            'Nexus - Applications',
-            new moodle_url('/local/nexus/applications.php')
+            get_string('manageapplications', 'local_nexus'),
+            new moodle_url('/local/nexus/manage_apps.php')
         )
     );
 }
