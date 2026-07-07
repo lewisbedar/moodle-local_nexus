@@ -26,8 +26,16 @@ class application_form extends \moodleform {
         ]);
         $mform->setType('description', PARAM_TEXT);
 
-        $mform->addElement('text', 'icon', 'URL de l’icône');
+        $mform->addElement('text', 'icon', get_string('iconurl', 'local_nexus'));
         $mform->setType('icon', PARAM_RAW);
+
+        $mform->addElement(
+            'filemanager',
+            'iconfile',
+            get_string('iconfile', 'local_nexus'),
+            null,
+            \local_nexus\local\application_service::filemanager_options()
+        );
 
         $mform->addElement('text', 'url', 'URL de l’application');
         $mform->setType('url', PARAM_URL);

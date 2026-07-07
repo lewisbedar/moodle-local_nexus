@@ -3,6 +3,7 @@ namespace local_nexus;
 
 defined('MOODLE_INTERNAL') || die();
 
+use local_nexus\local\application_service;
 use local_nexus\output\application;
 
 class manager {
@@ -20,7 +21,7 @@ class manager {
         foreach ($records as $record) {
             $applications[] = new application(
                 $record->name,
-                $record->icon ?? '',
+                application_service::get_icon_url($record),
                 $record->url,
                 $record->description ?? '',
                 $record->visibility !== 'public',

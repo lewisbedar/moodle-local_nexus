@@ -1,12 +1,15 @@
 <?php
 require_once(__DIR__ . '/../../config.php');
+require_once($CFG->libdir . '/filelib.php');
 
 require_login();
-require_capability('moodle/site:config', context_system::instance());
+$context = context_system::instance();
+require_capability('moodle/site:config', $context);
 
 $id = optional_param('id', 0, PARAM_INT);
+$filemanageroptions = \local_nexus\local\application_service::filemanager_options();
 
-$PAGE->set_context(context_system::instance());
+$PAGE->set_context($context);
 $PAGE->set_url(new moodle_url('/local/nexus/edit.php', ['id' => $id]));
 $PAGE->set_title('Nexus - Modifier une application');
 $PAGE->set_heading('Nexus - Modifier une application');
@@ -40,17 +43,47 @@ if ($data = $mform->get_data()) {
     if (!empty($data->id)) {
         $record->id = $data->id;
         $DB->update_record('local_nexus_applications', $record);
+        file_save_draft_area_files(
+            $data->iconfile,
+            $context->id,
+            'local_nexus',
+            'appicon',
+            $record->id,
+            $filemanageroptions
+        );
         redirect(new moodle_url('/local/nexus/manage_apps.php'), get_string('applicationupdated', 'local_nexus'));
     } else {
         $record->timecreated = time();
-        $DB->insert_record('local_nexus_applications', $record);
+        $record->id = $DB->insert_record('local_nexus_applications', $record);
+        file_save_draft_area_files(
+            $data->iconfile,
+            $context->id,
+            'local_nexus',
+            'appicon',
+            $record->id,
+            $filemanageroptions
+        );
         redirect(new moodle_url('/local/nexus/manage_apps.php'), get_string('applicationadded', 'local_nexus'));
     }
 }
 
 if ($id) {
     $app = $DB->get_record('local_nexus_applications', ['id' => $id], '*', MUST_EXIST);
+    $draftitemid = file_get_submitted_draft_itemid('iconfile');
+    file_prepare_draft_area(
+        $draftitemid,
+        $context->id,
+        'local_nexus',
+        'appicon',
+        $app->id,
+        $filemanageroptions
+    );
+    $app->iconfile = $draftitemid;
     $mform->set_data($app);
+} else {
+    $draftitemid = file_get_submitted_draft_itemid('iconfile');
+    file_prepare_draft_area($draftitemid, $context->id, 'local_nexus', 'appicon', 0, $filemanageroptions);
+    $mform->set_data(['iconfile' => $draftitemid]);
 }
 
 echo $OUTPUT->header();

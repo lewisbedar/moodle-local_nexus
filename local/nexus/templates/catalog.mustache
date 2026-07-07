@@ -8,30 +8,58 @@
     </div>
   </section>
 
-  <section class="fc-app-grid">
-    {{#applications}}
-      <article class="fc-app-card {{#locked}}fc-app-card-locked{{/locked}}">
-        <div class="fc-app-icon">
-          <img src="{{icon}}" alt="">
+  {{#hascategories}}
+    <nav class="fc-category-filter" aria-label="{{#str}}applicationcategories, local_nexus{{/str}}">
+      <a href="{{allcategoriesurl}}" class="fc-category-pill {{#allcategoriesactive}}fc-category-pill-active{{/allcategoriesactive}}">
+        {{#str}}allapplications, local_nexus{{/str}}
+      </a>
+      {{#categories}}
+        <a href="{{url}}" class="fc-category-pill {{#active}}fc-category-pill-active{{/active}}">{{label}}</a>
+      {{/categories}}
+    </nav>
+  {{/hascategories}}
+
+  {{#hassections}}
+    {{#sections}}
+      <section class="fc-category-section">
+        <div class="fc-section-heading">
+          <p class="fc-kicker">{{#str}}category, local_nexus{{/str}}</p>
+          <h2>{{label}}</h2>
         </div>
 
-        <div class="fc-app-content">
-          <h2>{{name}}</h2>
-          {{#hascategory}}<p class="fc-app-category">{{category}}</p>{{/hascategory}}
-          <p>{{{description}}}</p>
-          {{#hasversion}}<p class="fc-app-version">{{#str}}version, local_nexus{{/str}} {{version}}</p>{{/hasversion}}
+        <div class="fc-app-grid">
+          {{#applications}}
+            <article class="fc-app-card {{#locked}}fc-app-card-locked{{/locked}}">
+              <div class="fc-app-icon">
+                <img src="{{icon}}" alt="">
+              </div>
 
-          <span class="fc-app-badge">
-            {{#locked}}Accès réservé{{/locked}}
-            {{^locked}}Public{{/locked}}
-          </span>
+              <div class="fc-app-content">
+                <h2>{{name}}</h2>
+                {{#hascategory}}<p class="fc-app-category">{{category}}</p>{{/hascategory}}
+                <p>{{{description}}}</p>
+                {{#hasversion}}<p class="fc-app-version">{{#str}}version, local_nexus{{/str}} {{version}}</p>{{/hasversion}}
 
-<a href="/applications/{{slug}}" class="btn btn-primary fc-app-button">
-  {{#str}}discover, local_nexus{{/str}}
-</a>
+                <span class="fc-app-badge">
+                  {{#locked}}Accès réservé{{/locked}}
+                  {{^locked}}Public{{/locked}}
+                </span>
+
+                <a href="/applications/{{slug}}" class="btn btn-primary fc-app-button">
+                  {{#str}}discover, local_nexus{{/str}}
+                </a>
+              </div>
+            </article>
+          {{/applications}}
         </div>
-      </article>
-    {{/applications}}
-  </section>
+      </section>
+    {{/sections}}
+  {{/hassections}}
+
+  {{^hassections}}
+    <section class="fc-empty-state">
+      <p>{{#str}}noapplicationsincategory, local_nexus{{/str}}</p>
+    </section>
+  {{/hassections}}
 
 </div>

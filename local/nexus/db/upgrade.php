@@ -27,5 +27,26 @@ function xmldb_local_nexus_upgrade(int $oldversion): bool {
         upgrade_plugin_savepoint(true, 2026070700, 'local', 'nexus');
     }
 
+    if ($oldversion < 2026070701) {
+        $table = new xmldb_table('local_nexus_news');
+
+        if (!$dbman->table_exists($table)) {
+            $table->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
+            $table->add_field('title', XMLDB_TYPE_CHAR, '255', null, XMLDB_NOTNULL, null, null);
+            $table->add_field('summary', XMLDB_TYPE_TEXT, null, null, null, null, null);
+            $table->add_field('url', XMLDB_TYPE_CHAR, '255', null, null, null, null);
+            $table->add_field('published', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, '1');
+            $table->add_field('sortorder', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, '0');
+            $table->add_field('timecreated', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, '0');
+            $table->add_field('timemodified', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, '0');
+
+            $table->add_key('primary', XMLDB_KEY_PRIMARY, ['id']);
+
+            $dbman->create_table($table);
+        }
+
+        upgrade_plugin_savepoint(true, 2026070701, 'local', 'nexus');
+    }
+
     return true;
 }
