@@ -9,6 +9,10 @@ class application {
         public string $icon,
         public string $url,
         public string $description = '',
-        public bool $locked = false
+        public bool $locked = false,
+        public string $version = '',
+        public string $status = 'stable',
+        public string $category = '',
+        public string $color = ''
     ) {}
 }

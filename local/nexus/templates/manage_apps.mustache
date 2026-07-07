@@ -1,0 +1,44 @@
+<div class="local-nexus-manage-apps">
+  <p>
+    <a href="{{addurl}}" class="btn btn-primary mb-3">{{#str}}addapplication, local_nexus{{/str}}</a>
+  </p>
+
+  <div class="table-responsive">
+    <table class="table generaltable">
+      <thead>
+        <tr>
+          <th scope="col">{{#str}}name{{/str}}</th>
+          <th scope="col">{{#str}}version, local_nexus{{/str}}</th>
+          <th scope="col">{{#str}}status, local_nexus{{/str}}</th>
+          <th scope="col">{{#str}}category, local_nexus{{/str}}</th>
+          <th scope="col">{{#str}}visibility, local_nexus{{/str}}</th>
+          <th scope="col">{{#str}}sortorder, local_nexus{{/str}}</th>
+          <th scope="col">{{#str}}state, local_nexus{{/str}}</th>
+          <th scope="col">{{#str}}showdock, local_nexus{{/str}}</th>
+          <th scope="col">{{#str}}showhomepage, local_nexus{{/str}}</th>
+          <th scope="col">{{#str}}actions{{/str}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#applications}}
+          <tr>
+            <td>{{name}}</td>
+            <td>{{version}}</td>
+            <td>{{status}}</td>
+            <td>{{category}}</td>
+            <td>{{visibility}}</td>
+            <td>{{sortorder}}</td>
+            <td>{{enabledlabel}}</td>
+            <td>{{showdocklabel}}</td>
+            <td>{{showhomepagelabel}}</td>
+            <td>
+              <a href="{{editurl}}">{{#str}}edit{{/str}}</a>
+              <span aria-hidden="true"> | </span>
+              <a href="{{deleteurl}}">{{#str}}delete{{/str}}</a>
+            </td>
+          </tr>
+        {{/applications}}
+      </tbody>
+    </table>
+  </div>
+</div>
