@@ -6,6 +6,7 @@ defined('MOODLE_INTERNAL') || die();
 use renderable;
 use templatable;
 use renderer_base;
+use local_nexus\local\course_service;
 use local_nexus\local\news_service;
 use local_nexus\manager;
 
@@ -38,6 +39,8 @@ class dashboard implements renderable, templatable {
             'secondaryurl' => $config->hero_secondary_url ?? 'https://www.docs.flux-croises.fr',
         ];
 
+        $courses = course_service::get_recent_courses();
+
         $newsitems = [];
 
         foreach (news_service::get_latest() as $news) {
@@ -54,6 +57,8 @@ class dashboard implements renderable, templatable {
             'subtitle' => $hero['subtitle'],
             'hero' => $hero,
             'applications' => $apps,
+            'courses' => $courses,
+            'hascourses' => !empty($courses),
             'news' => $newsitems,
             'hasnews' => !empty($newsitems),
         ];

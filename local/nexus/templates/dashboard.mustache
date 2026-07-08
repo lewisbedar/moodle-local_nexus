@@ -16,6 +16,25 @@
   {{> local_nexus/dock }}
 
 
+  {{#hascourses}}
+    <section class="fc-courses-section">
+      <div class="fc-section-heading">
+        <p class="fc-kicker">{{#str}}mycourses, local_nexus{{/str}}</p>
+        <h2>{{#str}}recentcourses, local_nexus{{/str}}</h2>
+      </div>
+
+      <div class="fc-course-grid">
+        {{#courses}}
+          <a href="{{url}}" class="fc-course-card {{#hidden}}fc-course-card-hidden{{/hidden}}">
+            <strong>{{fullname}}</strong>
+            <span>{{shortname}}</span>
+          </a>
+        {{/courses}}
+      </div>
+    </section>
+  {{/hascourses}}
+
+
   {{#hasnews}}
     <section class="fc-news-section">
       <div class="fc-section-heading">

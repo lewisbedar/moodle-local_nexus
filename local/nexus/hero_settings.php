@@ -17,6 +17,7 @@ if ($data = $mform->get_data()) {
     foreach (['hero_title', 'hero_subtitle', 'hero_primary_label', 'hero_primary_url', 'hero_secondary_label', 'hero_secondary_url'] as $name) {
         set_config($name, $data->{$name}, 'local_nexus');
     }
+    set_config('nexus_as_home', !empty($data->nexus_as_home) ? 1 : 0, 'local_nexus');
 
     redirect(new moodle_url('/local/nexus/hero_settings.php'), get_string('settingssaved', 'local_nexus'));
 }
@@ -29,6 +30,7 @@ $mform->set_data([
     'hero_primary_url' => $config->hero_primary_url ?? '/my/courses.php',
     'hero_secondary_label' => $config->hero_secondary_label ?? 'Documentation',
     'hero_secondary_url' => $config->hero_secondary_url ?? 'https://www.docs.flux-croises.fr',
+    'nexus_as_home' => !empty($config->nexus_as_home),
 ]);
 
 echo $OUTPUT->header();

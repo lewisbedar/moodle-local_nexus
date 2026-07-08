@@ -26,3 +26,25 @@ function local_nexus_pluginfile($course, $cm, $context, $filearea, $args, $force
     send_stored_file($file, 0, 0, $forcedownload, $options);
     return true;
 }
+
+function local_nexus_before_http_headers() {
+    global $CFG;
+
+    if (defined('CLI_SCRIPT') && CLI_SCRIPT) {
+        return;
+    }
+
+    $config = get_config('local_nexus');
+
+    if (empty($config->nexus_as_home) || headers_sent()) {
+        return;
+    }
+
+    $scriptfile = $_SERVER['SCRIPT_FILENAME'] ?? '';
+    $frontpage = $CFG->dirroot . '/index.php';
+    $dashboard = $CFG->dirroot . '/my/index.php';
+
+    if ($scriptfile === $frontpage || $scriptfile === $dashboard) {
+        redirect(new moodle_url('/local/nexus/index.php'));
+    }
+}

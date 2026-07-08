@@ -33,6 +33,9 @@ class hero_settings_form extends \moodleform {
         $mform->setType('hero_secondary_url', PARAM_URL);
         $mform->addRule('hero_secondary_url', null, 'required');
 
+        $mform->addElement('advcheckbox', 'nexus_as_home', get_string('nexusashome', 'local_nexus'));
+        $mform->setDefault('nexus_as_home', 0);
+
         $this->add_action_buttons(false, get_string('savechanges'));
     }
 }

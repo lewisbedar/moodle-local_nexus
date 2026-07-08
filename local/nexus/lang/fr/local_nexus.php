@@ -72,3 +72,6 @@ $string['heroprimaryurl'] = 'URL du bouton principal';
 $string['herosecondarylabel'] = 'Libellé du bouton secondaire';
 $string['herosecondaryurl'] = 'URL du bouton secondaire';
 $string['settingssaved'] = 'Réglages enregistrés.';
+$string['nexusashome'] = 'Utiliser Nexus comme page d’accueil et tableau de bord Moodle';
+$string['mycourses'] = 'Mes formations';
+$string['recentcourses'] = 'Dernières formations suivies';
