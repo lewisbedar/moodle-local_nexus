@@ -76,3 +76,5 @@ $string['nexusashome'] = 'Utiliser Nexus comme page d’accueil et tableau de bo
 $string['mycourses'] = 'Mes formations';
 $string['recentcourses'] = 'Dernières formations suivies';
 $string['lastaccess'] = 'Dernier accès :';
+$string['MYCOURSES'] = 'Mes formations';
+$string['RECENTCOURSES'] = 'Dernières formations suivies';

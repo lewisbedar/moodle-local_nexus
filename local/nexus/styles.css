@@ -545,3 +545,39 @@
   font-style: normal;
   margin-top: 0.5rem;
 }
+
+.path-local-nexus #region-main,
+.path-local-nexus .region-main,
+.path-local-nexus [role="main"] {
+  max-width: none;
+}
+
+.fc-dashboard {
+  max-width: none;
+  width: 100%;
+}
+
+.fc-course-card {
+  overflow: hidden;
+  padding: 0;
+}
+
+.fc-course-card strong,
+.fc-course-card span,
+.fc-course-card em {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+
+.fc-course-card em {
+  margin-bottom: 1.25rem;
+}
+
+.fc-course-card-image {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.16), rgba(124, 58, 237, 0.16));
+  display: block;
+  height: 9rem;
+  margin-bottom: 1rem;
+  object-fit: cover;
+  width: 100%;
+}

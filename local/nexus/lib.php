@@ -28,15 +28,27 @@ function local_nexus_pluginfile($course, $cm, $context, $filearea, $args, $force
 }
 
 function local_nexus_before_http_headers() {
+    local_nexus_redirect_home_requests();
+}
+
+function local_nexus_after_config() {
+    local_nexus_redirect_home_requests();
+}
+
+function local_nexus_redirect_home_requests(): void {
     global $CFG;
 
-    if (defined('CLI_SCRIPT') && CLI_SCRIPT) {
+    if ((defined('CLI_SCRIPT') && CLI_SCRIPT) || (defined('AJAX_SCRIPT') && AJAX_SCRIPT)) {
+        return;
+    }
+
+    if (headers_sent()) {
         return;
     }
 
     $config = get_config('local_nexus');
 
-    if (empty($config->nexus_as_home) || headers_sent()) {
+    if (empty($config->nexus_as_home)) {
         return;
     }
 

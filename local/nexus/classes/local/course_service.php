@@ -1,6 +1,7 @@
 <?php
 namespace local_nexus\local;
 
+use context_course;
 use moodle_url;
 
 class course_service {
@@ -49,17 +50,49 @@ class course_service {
         $courses = array_slice($courses, 0, $limit, true);
 
         foreach ($courses as $course) {
+            $imageurl = self::get_course_image_url((int) $course->id);
+
             $items[] = [
                 'fullname' => format_string($course->fullname),
                 'shortname' => format_string($course->shortname),
                 'summary' => format_text($course->summary, $course->summaryformat),
                 'url' => (new moodle_url('/course/view.php', ['id' => $course->id]))->out(false),
                 'hidden' => empty($course->visible),
+                'hasimage' => $imageurl !== '',
+                'imageurl' => $imageurl,
                 'haslastaccess' => !empty($course->nexuslastaccess),
                 'lastaccess' => !empty($course->nexuslastaccess) ? userdate($course->nexuslastaccess, get_string('strftimedate', 'langconfig')) : '',
             ];
         }
 
         return $items;
+    }
+
+    private static function get_course_image_url(int $courseid): string {
+        $context = context_course::instance($courseid, IGNORE_MISSING);
+
+        if (!$context) {
+            return '';
+        }
+
+        $fs = get_file_storage();
+        $files = $fs->get_area_files($context->id, 'course', 'overviewfiles', 0, 'filename', false);
+
+        foreach ($files as $file) {
+            if (!$file->is_valid_image()) {
+                continue;
+            }
+
+            return moodle_url::make_pluginfile_url(
+                $context->id,
+                'course',
+                'overviewfiles',
+                0,
+                $file->get_filepath(),
+                $file->get_filename()
+            )->out(false);
+        }
+
+        return '';
     }
 }
