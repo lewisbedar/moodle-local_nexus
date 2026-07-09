@@ -75,3 +75,4 @@ $string['settingssaved'] = 'Réglages enregistrés.';
 $string['nexusashome'] = 'Utiliser Nexus comme page d’accueil et tableau de bord Moodle';
 $string['mycourses'] = 'Mes formations';
 $string['recentcourses'] = 'Dernières formations suivies';
+$string['lastaccess'] = 'Dernier accès :';

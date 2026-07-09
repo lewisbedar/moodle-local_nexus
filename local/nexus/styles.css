@@ -537,3 +537,11 @@
 .fc-course-card-hidden {
   opacity: 0.72;
 }
+
+.fc-course-card em {
+  color: var(--fc-muted);
+  display: block;
+  font-size: 0.82rem;
+  font-style: normal;
+  margin-top: 0.5rem;
+}

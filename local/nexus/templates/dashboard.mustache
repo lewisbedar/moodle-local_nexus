@@ -28,6 +28,7 @@
           <a href="{{url}}" class="fc-course-card {{#hidden}}fc-course-card-hidden{{/hidden}}">
             <strong>{{fullname}}</strong>
             <span>{{shortname}}</span>
+            {{#haslastaccess}}<em>{{#str}}lastaccess, local_nexus{{/str}} {{lastaccess}}</em>{{/haslastaccess}}
           </a>
         {{/courses}}
       </div>
