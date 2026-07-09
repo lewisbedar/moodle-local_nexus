@@ -1,11 +1,12 @@
 <div class="fc-dashboard">
 
   <section class="fc-hero">
-    <div>
-      <p class="fc-kicker">Flux Croisés</p>
+    {{#hero.hasicon}}<img src="{{hero.iconurl}}" alt="" class="fc-hero-watermark">{{/hero.hasicon}}
+    <div class="fc-hero-content">
       <h1>Applications</h1>
       <p>Retrouvez les outils créatifs, ressources et services de Flux Croisés.</p>
     </div>
+    {{#hero.haslogo}}<img src="{{hero.logourl}}" alt="" class="fc-hero-logo">{{/hero.haslogo}}
   </section>
 
   {{#hascategories}}

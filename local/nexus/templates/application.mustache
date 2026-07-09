@@ -1,12 +1,12 @@
 <div class="fc-dashboard">
 
   <section class="fc-app-detail-hero">
+    {{#hero.hasicon}}<img src="{{hero.iconurl}}" alt="" class="fc-hero-watermark">{{/hero.hasicon}}
     <div class="fc-app-detail-icon">
       <img src="{{icon}}" alt="">
     </div>
 
     <div class="fc-app-detail-content">
-      <p class="fc-kicker">Application Flux Croisés</p>
       <h1>{{name}}</h1>
       <p>{{{description}}}</p>
 
@@ -21,6 +21,7 @@
         <a href="/applications" class="btn btn-light">{{#str}}backtoapplications, local_nexus{{/str}}</a>
       </div>
     </div>
+    {{#hero.haslogo}}<img src="{{hero.logourl}}" alt="" class="fc-hero-logo">{{/hero.haslogo}}
   </section>
 
   <section class="fc-app-detail-layout">

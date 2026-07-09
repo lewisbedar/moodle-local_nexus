@@ -2,7 +2,9 @@
 defined('MOODLE_INTERNAL') || die();
 
 function local_nexus_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
-    if ($context->contextlevel !== CONTEXT_SYSTEM || $filearea !== 'appicon') {
+    $allowedareas = ['appicon', 'heroicon', 'herologo'];
+
+    if ($context->contextlevel !== CONTEXT_SYSTEM || !in_array($filearea, $allowedareas, true)) {
         return false;
     }
 
@@ -11,7 +13,7 @@ function local_nexus_pluginfile($course, $cm, $context, $filearea, $args, $force
     $itemid = array_shift($args);
     $filename = array_pop($args);
 
-    if (!$itemid || !$filename) {
+    if ($itemid === null || $itemid === '' || !$filename) {
         return false;
     }
 

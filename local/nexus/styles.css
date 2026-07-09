@@ -30,6 +30,7 @@
   box-shadow: var(--fc-shadow);
   overflow: hidden;
   padding: 2rem;
+  position: relative;
 }
 
 .fc-hero-large {
@@ -40,6 +41,14 @@
 
 .fc-hero-content {
   max-width: 42rem;
+  position: relative;
+  z-index: 2;
+}
+
+.fc-app-detail-content,
+.fc-app-detail-icon {
+  position: relative;
+  z-index: 2;
 }
 
 .fc-kicker,
@@ -75,6 +84,57 @@
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 1.5rem;
+}
+
+.fc-hero-watermark {
+  height: 8rem;
+  left: 1.5rem;
+  object-fit: contain;
+  opacity: 0.13;
+  pointer-events: none;
+  position: absolute;
+  top: 1.25rem;
+  width: 8rem;
+  z-index: 1;
+}
+
+.fc-hero-logo {
+  bottom: 1.5rem;
+  max-height: 4.5rem;
+  max-width: 10rem;
+  object-fit: contain;
+  opacity: 0.88;
+  position: absolute;
+  right: 1.5rem;
+  z-index: 2;
+}
+
+.fc-hero-user {
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.86);
+  border-radius: 999px;
+  box-shadow: var(--fc-shadow);
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.55rem 0.9rem 0.55rem 0.55rem;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+  z-index: 3;
+}
+
+.fc-hero-user-picture {
+  border-radius: 999px;
+  height: 3rem;
+  object-fit: cover;
+  width: 3rem;
+}
+
+.fc-hero-user span {
+  color: var(--fc-dark);
+  font-weight: 700;
 }
 
 .fc-dashboard .btn-primary,
@@ -306,6 +366,16 @@
 
   .fc-hero-large {
     min-height: 0;
+  }
+
+  .fc-hero-logo,
+  .fc-hero-user {
+    margin-top: 1rem;
+    position: static;
+  }
+
+  .fc-hero-user {
+    width: fit-content;
   }
 
   .fc-app-detail-hero {

@@ -63,9 +63,18 @@ foreach ($categories as $category) {
     $sections[] = $category;
 }
 
+$heroiconurl = \local_nexus\local\hero_service::get_file_url(\local_nexus\local\hero_service::FILEAREA_ICON);
+$herologourl = \local_nexus\local\hero_service::get_file_url(\local_nexus\local\hero_service::FILEAREA_LOGO);
+
 echo $OUTPUT->header();
 
 echo $OUTPUT->render_from_template('local_nexus/catalog', [
+    'hero' => [
+        'iconurl' => $heroiconurl,
+        'logourl' => $herologourl,
+        'hasicon' => $heroiconurl !== '',
+        'haslogo' => $herologourl !== '',
+    ],
     'allcategoriesurl' => '/applications',
     'allcategoriesactive' => $selectedcategory === '',
     'categories' => $categories,

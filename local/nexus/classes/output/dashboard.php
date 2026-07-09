@@ -7,11 +7,14 @@ use renderable;
 use templatable;
 use renderer_base;
 use local_nexus\local\course_service;
+use local_nexus\local\hero_service;
 use local_nexus\local\news_service;
 use local_nexus\manager;
 
 class dashboard implements renderable, templatable {
     public function export_for_template(renderer_base $output): array {
+        global $PAGE, $USER;
+
         $apps = [];
 
         foreach (manager::get_applications() as $app) {
@@ -37,6 +40,18 @@ class dashboard implements renderable, templatable {
             'primaryurl' => $config->hero_primary_url ?? '/my/courses.php',
             'secondarylabel' => $config->hero_secondary_label ?? 'Documentation',
             'secondaryurl' => $config->hero_secondary_url ?? 'https://www.docs.flux-croises.fr',
+            'iconurl' => hero_service::get_file_url(hero_service::FILEAREA_ICON),
+            'logourl' => hero_service::get_file_url(hero_service::FILEAREA_LOGO),
+        ];
+
+        $hero['hasicon'] = $hero['iconurl'] !== '';
+        $hero['haslogo'] = $hero['logourl'] !== '';
+
+        $userpicture = new \user_picture($USER);
+        $userpicture->size = 96;
+        $user = [
+            'fullname' => fullname($USER),
+            'pictureurl' => $userpicture->get_url($PAGE)->out(false),
         ];
 
         $courses = course_service::get_recent_courses();
@@ -56,6 +71,7 @@ class dashboard implements renderable, templatable {
             'title' => $hero['title'],
             'subtitle' => $hero['subtitle'],
             'hero' => $hero,
+            'user' => $user,
             'applications' => $apps,
             'courses' => $courses,
             'hascourses' => !empty($courses),

@@ -47,10 +47,13 @@ if (!empty($app->category)) {
     ];
 }
 
+$appiconurl = \local_nexus\local\application_service::get_icon_url($app);
+$herologourl = \local_nexus\local\hero_service::get_file_url(\local_nexus\local\hero_service::FILEAREA_LOGO);
+
 $data = [
     'name' => format_string($app->name),
     'description' => format_text($app->description),
-    'icon' => \local_nexus\local\application_service::get_icon_url($app),
+    'icon' => $appiconurl,
     'url' => $app->url,
     'visibility' => $app->visibility,
     'version' => s($app->version ?? ''),
@@ -63,6 +66,12 @@ $data = [
     'locked' => $app->visibility !== 'public',
     'accesslabel' => $accesslabel,
     'metaitems' => $metaitems,
+    'hero' => [
+        'iconurl' => $appiconurl,
+        'logourl' => $herologourl,
+        'hasicon' => true,
+        'haslogo' => $herologourl !== '',
+    ],
 ];
 
 echo $OUTPUT->header();

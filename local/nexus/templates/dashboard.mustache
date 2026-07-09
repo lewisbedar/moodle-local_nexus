@@ -1,8 +1,8 @@
 <div class="fc-dashboard">
 
   <section class="fc-hero fc-hero-large">
+    {{#hero.hasicon}}<img src="{{hero.iconurl}}" alt="" class="fc-hero-watermark">{{/hero.hasicon}}
     <div class="fc-hero-content">
-      <p class="fc-kicker">Flux Croisés</p>
       <h1>{{title}}</h1>
       <p>{{subtitle}}</p>
 
@@ -11,6 +11,11 @@
         <a href="{{hero.secondaryurl}}" class="btn btn-light">{{hero.secondarylabel}}</a>
       </div>
     </div>
+    <div class="fc-hero-user">
+      <img src="{{user.pictureurl}}" alt="" class="fc-hero-user-picture">
+      <span>{{user.fullname}}</span>
+    </div>
+    {{#hero.haslogo}}<img src="{{hero.logourl}}" alt="" class="fc-hero-logo">{{/hero.haslogo}}
   </section>
 
   {{> local_nexus/dock }}

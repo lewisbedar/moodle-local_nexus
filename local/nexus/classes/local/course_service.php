@@ -83,14 +83,18 @@ class course_service {
                 continue;
             }
 
-            return moodle_url::make_pluginfile_url(
+            $url = moodle_url::make_pluginfile_url(
                 $context->id,
                 'course',
                 'overviewfiles',
                 0,
                 $file->get_filepath(),
-                $file->get_filename()
-            )->out(false);
+                $file->get_filename(),
+                false
+            );
+            $url->param('preview', 'thumb');
+
+            return $url->out(false);
         }
 
         return '';
