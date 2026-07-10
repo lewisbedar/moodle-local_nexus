@@ -602,6 +602,8 @@
 
 .fc-course-card span {
   color: var(--fc-muted);
+  display: block;
+  line-height: 1.45;
 }
 
 .fc-course-card-hidden {
@@ -645,9 +647,11 @@
 
 .fc-course-card-image {
   background: linear-gradient(135deg, rgba(37, 99, 235, 0.16), rgba(124, 58, 237, 0.16));
+  border-radius: 1.25rem 1.25rem 0 0;
   display: block;
   height: 9rem;
-  margin-bottom: 1rem;
+  margin: -1px -1px 1rem;
+  max-width: none;
   object-fit: cover;
-  width: 100%;
+  width: calc(100% + 2px);
 }

@@ -19,7 +19,6 @@ class hero_service {
             'maxbytes' => 2 * 1024 * 1024,
             'maxfiles' => 1,
             'accepted_types' => ['web_image'],
-            'return_types' => \FILE_INTERNAL,
         ];
     }
 
