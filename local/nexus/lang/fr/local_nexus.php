@@ -93,3 +93,4 @@ $string['dashboardcardcatalog'] = 'Catalogue';
 $string['dashboardcardcatalogdesc'] = 'Explorer les ressources disponibles sur Nexus.';
 $string['dashboardcarddocs'] = 'Documentation';
 $string['dashboardcarddocsdesc'] = 'Consulter les tutoriels, guides et fiches pratiques.';
+$string['dashboard'] = 'Tableau de bord';
