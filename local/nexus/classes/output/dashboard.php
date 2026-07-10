@@ -40,7 +40,7 @@ class dashboard implements renderable, templatable {
             'primaryurl' => $config->hero_primary_url ?? '/my/courses.php',
             'secondarylabel' => $config->hero_secondary_label ?? 'Documentation',
             'secondaryurl' => $config->hero_secondary_url ?? 'https://www.docs.flux-croises.fr',
-            'iconurl' => hero_service::get_file_url(hero_service::FILEAREA_ICON),
+            'iconurl' => hero_service::get_icon_url('home'),
             'logourl' => hero_service::get_file_url(hero_service::FILEAREA_LOGO),
         ];
 

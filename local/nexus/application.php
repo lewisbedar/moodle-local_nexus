@@ -48,6 +48,7 @@ if (!empty($app->category)) {
 }
 
 $appiconurl = \local_nexus\local\application_service::get_icon_url($app);
+$heroiconurl = \local_nexus\local\hero_service::get_icon_url('application') ?: $appiconurl;
 $herologourl = \local_nexus\local\hero_service::get_file_url(\local_nexus\local\hero_service::FILEAREA_LOGO);
 
 $data = [
@@ -67,9 +68,9 @@ $data = [
     'accesslabel' => $accesslabel,
     'metaitems' => $metaitems,
     'hero' => [
-        'iconurl' => $appiconurl,
+        'iconurl' => $heroiconurl,
         'logourl' => $herologourl,
-        'hasicon' => true,
+        'hasicon' => $heroiconurl !== '',
         'haslogo' => $herologourl !== '',
     ],
 ];

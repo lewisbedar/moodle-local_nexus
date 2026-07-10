@@ -8,6 +8,9 @@ use moodle_url;
 
 class hero_service {
     public const FILEAREA_ICON = 'heroicon';
+    public const FILEAREA_HOME_ICON = 'heroiconhome';
+    public const FILEAREA_CATALOG_ICON = 'heroiconcatalog';
+    public const FILEAREA_APPLICATION_ICON = 'heroiconapplication';
     public const FILEAREA_LOGO = 'herologo';
 
     public static function filemanager_options(): array {
@@ -16,12 +19,38 @@ class hero_service {
             'maxbytes' => 2 * 1024 * 1024,
             'maxfiles' => 1,
             'accepted_types' => ['web_image'],
-            'return_types' => FILE_INTERNAL,
+            'return_types' => \FILE_INTERNAL,
         ];
     }
 
+    public static function get_icon_filearea(string $page): string {
+        return match ($page) {
+            'catalog' => self::FILEAREA_CATALOG_ICON,
+            'application' => self::FILEAREA_APPLICATION_ICON,
+            default => self::FILEAREA_HOME_ICON,
+        };
+    }
+
+    public static function get_icon_url(string $page): string {
+        $url = self::get_file_url(self::get_icon_filearea($page));
+
+        if ($url === '' && $page === 'home') {
+            return self::get_file_url(self::FILEAREA_ICON);
+        }
+
+        return $url;
+    }
+
     public static function get_file_url(string $filearea): string {
-        if (!in_array($filearea, [self::FILEAREA_ICON, self::FILEAREA_LOGO], true)) {
+        $allowedfileareas = [
+            self::FILEAREA_ICON,
+            self::FILEAREA_HOME_ICON,
+            self::FILEAREA_CATALOG_ICON,
+            self::FILEAREA_APPLICATION_ICON,
+            self::FILEAREA_LOGO,
+        ];
+
+        if (!in_array($filearea, $allowedfileareas, true)) {
             return '';
         }
 

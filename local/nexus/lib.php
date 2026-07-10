@@ -2,7 +2,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 function local_nexus_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
-    $allowedareas = ['appicon', 'heroicon', 'herologo'];
+    $allowedareas = ['appicon', 'heroicon', 'heroiconhome', 'heroiconcatalog', 'heroiconapplication', 'herologo'];
 
     if ($context->contextlevel !== CONTEXT_SYSTEM || !in_array($filearea, $allowedareas, true)) {
         return false;

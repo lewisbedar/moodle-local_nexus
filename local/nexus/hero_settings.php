@@ -20,14 +20,23 @@ if ($data = $mform->get_data()) {
         set_config($name, $data->{$name}, 'local_nexus');
     }
 
-    file_save_draft_area_files(
-        $data->hero_icon,
-        $context->id,
-        'local_nexus',
-        \local_nexus\local\hero_service::FILEAREA_ICON,
-        0,
-        $fileoptions
-    );
+    $heroiconfields = [
+        'hero_home_icon' => \local_nexus\local\hero_service::FILEAREA_HOME_ICON,
+        'hero_catalog_icon' => \local_nexus\local\hero_service::FILEAREA_CATALOG_ICON,
+        'hero_application_icon' => \local_nexus\local\hero_service::FILEAREA_APPLICATION_ICON,
+    ];
+
+    foreach ($heroiconfields as $field => $filearea) {
+        file_save_draft_area_files(
+            $data->{$field},
+            $context->id,
+            'local_nexus',
+            $filearea,
+            0,
+            $fileoptions
+        );
+    }
+
     file_save_draft_area_files(
         $data->hero_logo,
         $context->id,
@@ -43,15 +52,25 @@ if ($data = $mform->get_data()) {
 }
 
 $config = get_config('local_nexus');
-$heroicondraftitemid = file_get_submitted_draft_itemid('hero_icon');
-file_prepare_draft_area(
-    $heroicondraftitemid,
-    $context->id,
-    'local_nexus',
-    \local_nexus\local\hero_service::FILEAREA_ICON,
-    0,
-    $fileoptions
-);
+$heroiconfields = [
+    'hero_home_icon' => \local_nexus\local\hero_service::FILEAREA_HOME_ICON,
+    'hero_catalog_icon' => \local_nexus\local\hero_service::FILEAREA_CATALOG_ICON,
+    'hero_application_icon' => \local_nexus\local\hero_service::FILEAREA_APPLICATION_ICON,
+];
+$draftitemids = [];
+
+foreach ($heroiconfields as $field => $filearea) {
+    $draftitemids[$field] = file_get_submitted_draft_itemid($field);
+    file_prepare_draft_area(
+        $draftitemids[$field],
+        $context->id,
+        'local_nexus',
+        $filearea,
+        0,
+        $fileoptions
+    );
+}
+
 $herologodraftitemid = file_get_submitted_draft_itemid('hero_logo');
 file_prepare_draft_area(
     $herologodraftitemid,
@@ -69,7 +88,9 @@ $mform->set_data([
     'hero_primary_url' => $config->hero_primary_url ?? '/my/courses.php',
     'hero_secondary_label' => $config->hero_secondary_label ?? 'Documentation',
     'hero_secondary_url' => $config->hero_secondary_url ?? 'https://www.docs.flux-croises.fr',
-    'hero_icon' => $heroicondraftitemid,
+    'hero_home_icon' => $draftitemids['hero_home_icon'],
+    'hero_catalog_icon' => $draftitemids['hero_catalog_icon'],
+    'hero_application_icon' => $draftitemids['hero_application_icon'],
     'hero_logo' => $herologodraftitemid,
     'nexus_as_home' => !empty($config->nexus_as_home),
 ]);

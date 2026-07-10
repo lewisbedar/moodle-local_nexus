@@ -34,7 +34,7 @@
             {{#hasimage}}<img src="{{imageurl}}" alt="" class="fc-course-card-image">{{/hasimage}}
             {{^hasimage}}<span class="fc-course-card-image fc-course-card-image-empty" aria-hidden="true"></span>{{/hasimage}}
             <strong>{{fullname}}</strong>
-            <span>{{shortname}}</span>
+            {{#hassummary}}<span>{{summary}}</span>{{/hassummary}}
             {{#haslastaccess}}<em>{{#str}}lastaccess, local_nexus{{/str}} {{lastaccess}}</em>{{/haslastaccess}}
           </a>
         {{/courses}}

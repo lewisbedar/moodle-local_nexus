@@ -38,7 +38,7 @@ class application_service {
             'maxbytes' => 0,
             'maxfiles' => 1,
             'accepted_types' => ['.jpg', '.jpeg', '.png', '.gif', '.svg', '.webp'],
-            'return_types' => FILE_INTERNAL,
+            'return_types' => \FILE_INTERNAL,
         ];
     }
 

@@ -51,11 +51,13 @@ class course_service {
 
         foreach ($courses as $course) {
             $imageurl = self::get_course_image_url((int) $course->id);
+            $summary = trim(strip_tags(format_text($course->summary, $course->summaryformat)));
 
             $items[] = [
                 'fullname' => format_string($course->fullname),
                 'shortname' => format_string($course->shortname),
-                'summary' => format_text($course->summary, $course->summaryformat),
+                'summary' => shorten_text($summary, 150),
+                'hassummary' => $summary !== '',
                 'url' => (new moodle_url('/course/view.php', ['id' => $course->id]))->out(false),
                 'hidden' => empty($course->visible),
                 'hasimage' => $imageurl !== '',
@@ -83,18 +85,15 @@ class course_service {
                 continue;
             }
 
-            $url = moodle_url::make_pluginfile_url(
+            return moodle_url::make_pluginfile_url(
                 $context->id,
                 'course',
                 'overviewfiles',
-                0,
+                null,
                 $file->get_filepath(),
                 $file->get_filename(),
                 false
-            );
-            $url->param('preview', 'thumb');
-
-            return $url->out(false);
+            )->out(false);
         }
 
         return '';

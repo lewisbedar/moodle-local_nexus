@@ -35,8 +35,24 @@ class hero_settings_form extends \moodleform {
 
         $mform->addElement(
             'filemanager',
-            'hero_icon',
-            get_string('heroicon', 'local_nexus'),
+            'hero_home_icon',
+            get_string('herohomeicon', 'local_nexus'),
+            null,
+            \local_nexus\local\hero_service::filemanager_options()
+        );
+
+        $mform->addElement(
+            'filemanager',
+            'hero_catalog_icon',
+            get_string('herocatalogicon', 'local_nexus'),
+            null,
+            \local_nexus\local\hero_service::filemanager_options()
+        );
+
+        $mform->addElement(
+            'filemanager',
+            'hero_application_icon',
+            get_string('heroapplicationicon', 'local_nexus'),
             null,
             \local_nexus\local\hero_service::filemanager_options()
         );

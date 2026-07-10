@@ -63,7 +63,7 @@ foreach ($categories as $category) {
     $sections[] = $category;
 }
 
-$heroiconurl = \local_nexus\local\hero_service::get_file_url(\local_nexus\local\hero_service::FILEAREA_ICON);
+$heroiconurl = \local_nexus\local\hero_service::get_icon_url('catalog');
 $herologourl = \local_nexus\local\hero_service::get_file_url(\local_nexus\local\hero_service::FILEAREA_LOGO);
 
 echo $OUTPUT->header();
