@@ -9,6 +9,7 @@ $PAGE->set_context($context);
 $PAGE->set_url(new moodle_url('/local/nexus/index.php'));
 $PAGE->set_title('Nexus');
 $PAGE->set_heading('Nexus');
+$PAGE->requires->css(new moodle_url('/local/nexus/styles.css'));
 
 echo $OUTPUT->header();
 
