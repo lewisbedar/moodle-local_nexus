@@ -8,8 +8,8 @@ $selectedcategory = optional_param('category', '', PARAM_ALPHANUMEXT);
 
 $PAGE->set_context($context);
 $PAGE->set_url(new moodle_url('/local/nexus/catalog.php', ['category' => $selectedcategory ?: null]));
-$PAGE->set_title('Applications');
-$PAGE->set_heading('Applications');
+$PAGE->set_title(get_string('applications', 'local_nexus'));
+$PAGE->set_heading(get_string('applications', 'local_nexus'));
 $PAGE->requires->css(new moodle_url('/local/nexus/styles.css'));
 
 $apps = $DB->get_records(

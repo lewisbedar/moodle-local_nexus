@@ -19,6 +19,12 @@ $confirm = optional_param('confirm', 0, PARAM_BOOL);
 if ($delete && confirm_sesskey()) {
     if ($confirm) {
         $DB->delete_records('local_nexus_news', ['id' => $delete]);
+        get_file_storage()->delete_area_files(
+            $context->id,
+            'local_nexus',
+            \local_nexus\local\news_service::FILEAREA_IMAGE,
+            $delete
+        );
         redirect($manageurl, get_string('newsdeleted', 'local_nexus'));
     }
 
@@ -36,8 +42,12 @@ $records = $DB->get_records('local_nexus_news', null, 'sortorder ASC, timemodifi
 $news = [];
 
 foreach ($records as $record) {
+    $imageurl = \local_nexus\local\news_service::get_image_url((int) $record->id);
+
     $news[] = [
         'title' => format_string($record->title),
+        'imageurl' => $imageurl,
+        'hasimage' => $imageurl !== '',
         'summary' => format_text($record->summary, FORMAT_HTML),
         'sortorder' => (int) $record->sortorder,
         'publishedlabel' => $record->published ? get_string('yes') : get_string('no'),

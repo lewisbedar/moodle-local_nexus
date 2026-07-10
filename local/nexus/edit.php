@@ -11,8 +11,8 @@ $filemanageroptions = \local_nexus\local\application_service::filemanager_option
 
 $PAGE->set_context($context);
 $PAGE->set_url(new moodle_url('/local/nexus/edit.php', ['id' => $id]));
-$PAGE->set_title('Nexus - Modifier une application');
-$PAGE->set_heading('Nexus - Modifier une application');
+$PAGE->set_title(get_string('editapplication', 'local_nexus'));
+$PAGE->set_heading(get_string('editapplication', 'local_nexus'));
 $PAGE->requires->css(new moodle_url('/local/nexus/styles.css'));
 
 $mform = new \local_nexus\form\application_form();

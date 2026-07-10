@@ -3,8 +3,8 @@
   <section class="fc-hero">
     {{#hero.hasicon}}<img src="{{hero.iconurl}}" alt="" class="fc-hero-watermark">{{/hero.hasicon}}
     <div class="fc-hero-content">
-      <h1>Applications</h1>
-      <p>Retrouvez les outils créatifs, ressources et services de Flux Croisés.</p>
+      <h1>{{#str}}applications, local_nexus{{/str}}</h1>
+      <p>{{#str}}catalogintro, local_nexus{{/str}}</p>
     </div>
     {{#hero.haslogo}}<img src="{{hero.logourl}}" alt="" class="fc-hero-logo">{{/hero.haslogo}}
   </section>
@@ -42,8 +42,8 @@
                 {{#hasversion}}<p class="fc-app-version">{{#str}}version, local_nexus{{/str}} {{version}}</p>{{/hasversion}}
 
                 <span class="fc-app-badge">
-                  {{#locked}}Accès réservé{{/locked}}
-                  {{^locked}}Public{{/locked}}
+                  {{#locked}}{{#str}}restrictedaccess, local_nexus{{/str}}{{/locked}}
+                  {{^locked}}{{#str}}publicaccess, local_nexus{{/str}}{{/locked}}
                 </span>
 
                 <a href="/applications/{{slug}}" class="btn btn-primary fc-app-button">

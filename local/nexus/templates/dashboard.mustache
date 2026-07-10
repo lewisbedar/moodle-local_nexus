@@ -53,6 +53,7 @@
       <div class="fc-news-grid">
         {{#news}}
           <article class="fc-news-card">
+            {{#hasimage}}<img src="{{imageurl}}" alt="" class="fc-news-card-image">{{/hasimage}}
             <h3>{{title}}</h3>
             <p>{{{summary}}}</p>
             {{#hasurl}}<a href="{{url}}">{{#str}}readmore, local_nexus{{/str}}</a>{{/hasurl}}
@@ -64,18 +65,18 @@
 
   <section class="fc-cards">
     <a href="/my/courses.php" class="fc-card">
-      <strong>Mes formations</strong>
-      <span>Reprendre un parcours ou accéder à vos contenus réservés.</span>
+      <strong>{{#str}}dashboardcardcourses, local_nexus{{/str}}</strong>
+      <span>{{#str}}dashboardcardcoursesdesc, local_nexus{{/str}}</span>
     </a>
 
     <a href="/course/index.php" class="fc-card">
-      <strong>Catalogue</strong>
-      <span>Explorer les ressources disponibles sur Nexus.</span>
+      <strong>{{#str}}dashboardcardcatalog, local_nexus{{/str}}</strong>
+      <span>{{#str}}dashboardcardcatalogdesc, local_nexus{{/str}}</span>
     </a>
 
     <a href="https://www.docs.flux-croises.fr" class="fc-card">
-      <strong>Documentation</strong>
-      <span>Consulter les tutoriels, guides et fiches pratiques.</span>
+      <strong>{{#str}}dashboardcarddocs, local_nexus{{/str}}</strong>
+      <span>{{#str}}dashboardcarddocsdesc, local_nexus{{/str}}</span>
     </a>
   </section>
 

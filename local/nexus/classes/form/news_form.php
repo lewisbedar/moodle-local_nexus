@@ -23,6 +23,14 @@ class news_form extends \moodleform {
         ]);
         $mform->setType('summary_editor', PARAM_RAW);
 
+        $mform->addElement(
+            'filemanager',
+            'image',
+            get_string('featuredimage', 'local_nexus'),
+            null,
+            \local_nexus\local\news_service::image_filemanager_options()
+        );
+
         $mform->addElement('text', 'url', get_string('newsurl', 'local_nexus'));
         $mform->setType('url', PARAM_URL);
 

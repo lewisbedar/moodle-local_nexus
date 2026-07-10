@@ -8,6 +8,7 @@
       <thead>
         <tr>
           <th scope="col">{{#str}}newstitle, local_nexus{{/str}}</th>
+          <th scope="col">{{#str}}featuredimage, local_nexus{{/str}}</th>
           <th scope="col">{{#str}}newssummary, local_nexus{{/str}}</th>
           <th scope="col">{{#str}}sortorder, local_nexus{{/str}}</th>
           <th scope="col">{{#str}}published, local_nexus{{/str}}</th>
@@ -18,6 +19,7 @@
         {{#news}}
           <tr>
             <td>{{title}}</td>
+            <td>{{#hasimage}}<img src="{{imageurl}}" alt="" class="local-nexus-news-thumb">{{/hasimage}}</td>
             <td>{{{summary}}}</td>
             <td>{{sortorder}}</td>
             <td>{{publishedlabel}}</td>
