@@ -1,6 +1,8 @@
 <?php
 namespace local_nexus\local;
 
+defined('MOODLE_INTERNAL') || die();
+
 use context_system;
 use local_nexus\persistent\application;
 use moodle_url;

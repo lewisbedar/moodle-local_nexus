@@ -12,15 +12,15 @@ class application_form extends \moodleform {
         $mform->addElement('hidden', 'id');
         $mform->setType('id', PARAM_INT);
 
-        $mform->addElement('text', 'name', 'Nom');
+        $mform->addElement('text', 'name', get_string('applicationname', 'local_nexus'));
         $mform->setType('name', PARAM_TEXT);
         $mform->addRule('name', null, 'required');
 
-        $mform->addElement('text', 'slug', 'Slug');
+        $mform->addElement('text', 'slug', get_string('slug', 'local_nexus'));
         $mform->setType('slug', PARAM_ALPHANUMEXT);
         $mform->addRule('slug', null, 'required');
 
-        $mform->addElement('textarea', 'description', 'Description', [
+        $mform->addElement('textarea', 'description', get_string('description'), [
             'rows' => 3,
             'cols' => 60
         ]);
@@ -37,7 +37,7 @@ class application_form extends \moodleform {
             \local_nexus\local\application_service::filemanager_options()
         );
 
-        $mform->addElement('text', 'url', 'URL de l’application');
+        $mform->addElement('text', 'url', get_string('applicationurl', 'local_nexus'));
         $mform->setType('url', PARAM_URL);
         $mform->addRule('url', null, 'required');
 
@@ -70,11 +70,11 @@ class application_form extends \moodleform {
         $mform->addElement('advcheckbox', 'showhomepage', get_string('showhomepage', 'local_nexus'));
         $mform->setDefault('showhomepage', 1);
 
-        $mform->addElement('text', 'sortorder', 'Ordre');
+        $mform->addElement('text', 'sortorder', get_string('sortorder', 'local_nexus'));
         $mform->setType('sortorder', PARAM_INT);
         $mform->setDefault('sortorder', 10);
 
-        $mform->addElement('advcheckbox', 'enabled', 'Activée');
+        $mform->addElement('advcheckbox', 'enabled', get_string('enabled', 'local_nexus'));
         $mform->setDefault('enabled', 1);
 
         $this->add_action_buttons();

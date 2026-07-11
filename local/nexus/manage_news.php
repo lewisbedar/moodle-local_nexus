@@ -16,7 +16,9 @@ $PAGE->requires->css(new moodle_url('/local/nexus/styles.css'));
 $delete = optional_param('delete', 0, PARAM_INT);
 $confirm = optional_param('confirm', 0, PARAM_BOOL);
 
-if ($delete && confirm_sesskey()) {
+if ($delete) {
+    require_sesskey();
+
     if ($confirm) {
         $DB->delete_records('local_nexus_news', ['id' => $delete]);
         get_file_storage()->delete_area_files(
