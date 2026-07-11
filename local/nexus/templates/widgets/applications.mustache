@@ -1,0 +1,44 @@
+{{#hasapplications}}
+  <section class="fc-category-section">
+    <div class="fc-section-heading fc-section-heading-actions">
+      <div>
+        <p class="fc-kicker">{{#str}}applications, local_nexus{{/str}}</p>
+        <h2>{{customtitle}}</h2>
+      </div>
+      <a href="{{catalogurl}}" class="btn btn-light">{{#str}}allapplications, local_nexus{{/str}}</a>
+    </div>
+
+    <div class="fc-app-grid">
+      {{#applications}}
+        <article class="fc-app-card {{#locked}}fc-app-card-locked{{/locked}}">
+          <div class="fc-app-icon">
+            <img src="{{icon}}" alt="">
+          </div>
+
+          <div class="fc-app-content">
+            <h2>{{name}}</h2>
+            {{#hascategory}}<p class="fc-app-category">{{category}}</p>{{/hascategory}}
+            <p>{{{description}}}</p>
+            {{#hasversion}}<p class="fc-app-version">{{#str}}version, local_nexus{{/str}} {{version}}</p>{{/hasversion}}
+
+            <span class="fc-app-badge">
+              {{#locked}}{{#str}}restrictedaccess, local_nexus{{/str}}{{/locked}}
+              {{^locked}}{{#str}}publicaccess, local_nexus{{/str}}{{/locked}}
+            </span>
+
+            {{#canopen}}
+              <a href="/applications/{{slug}}" class="btn btn-primary fc-app-button">
+                {{#str}}discover, local_nexus{{/str}}
+              </a>
+            {{/canopen}}
+            {{^canopen}}
+              <span class="btn btn-light fc-app-button fc-app-button-disabled">
+                {{#str}}lockedapplication, local_nexus{{/str}}
+              </span>
+            {{/canopen}}
+          </div>
+        </article>
+      {{/applications}}
+    </div>
+  </section>
+{{/hasapplications}}

@@ -2,7 +2,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_nexus';
-$plugin->version = 2026070502;
+$plugin->version = 2026071101;
 $plugin->requires = 2025041400;
 $plugin->maturity = MATURITY_ALPHA;
-$plugin->release = '0.2';
+$plugin->release = '0.5';
