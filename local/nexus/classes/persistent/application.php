@@ -39,6 +39,38 @@ class application extends \core\persistent {
                 'default' => 'public'
             ],
 
+
+            'version' => [
+                'type' => PARAM_TEXT,
+                'default' => ''
+            ],
+
+            'status' => [
+                'type' => PARAM_ALPHA,
+                'default' => 'stable',
+                'choices' => ['stable', 'beta', 'alpha']
+            ],
+
+            'category' => [
+                'type' => PARAM_TEXT,
+                'default' => ''
+            ],
+
+            'color' => [
+                'type' => PARAM_TEXT,
+                'default' => ''
+            ],
+
+            'showdock' => [
+                'type' => PARAM_BOOL,
+                'default' => true
+            ],
+
+            'showhomepage' => [
+                'type' => PARAM_BOOL,
+                'default' => true
+            ],
+
             'sortorder' => [
                 'type' => PARAM_INT,
                 'default' => 0
