@@ -4,7 +4,7 @@ require_once($CFG->libdir . '/filelib.php');
 
 require_login();
 $context = context_system::instance();
-require_capability('moodle/site:config', $context);
+require_capability('local/nexus:manageapps', $context);
 
 $id = optional_param('id', 0, PARAM_INT);
 $filemanageroptions = \local_nexus\local\application_service::filemanager_options();

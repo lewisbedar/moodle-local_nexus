@@ -48,5 +48,16 @@ function xmldb_local_nexus_upgrade(int $oldversion): bool {
         upgrade_plugin_savepoint(true, 2026070701, 'local', 'nexus');
     }
 
+    if ($oldversion < 2026071100) {
+        $legacyhome = get_config('local_nexus', 'nexus_as_home');
+
+        if ($legacyhome !== false && get_config('local_nexus', 'nexus_as_site_home') === false) {
+            set_config('nexus_as_site_home', !empty($legacyhome) ? 1 : 0, 'local_nexus');
+            unset_config('nexus_as_home', 'local_nexus');
+        }
+
+        upgrade_plugin_savepoint(true, 2026071100, 'local', 'nexus');
+    }
+
     return true;
 }

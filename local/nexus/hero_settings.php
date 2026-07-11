@@ -4,7 +4,7 @@ require_once($CFG->libdir . '/filelib.php');
 
 require_login();
 $context = context_system::instance();
-require_capability('moodle/site:config', $context);
+require_capability('local/nexus:managehero', $context);
 
 $PAGE->set_context($context);
 $PAGE->set_url(new moodle_url('/local/nexus/hero_settings.php'));
@@ -46,7 +46,9 @@ if ($data = $mform->get_data()) {
         $fileoptions
     );
 
-    set_config('nexus_as_home', !empty($data->nexus_as_home) ? 1 : 0, 'local_nexus');
+    set_config('nexus_as_site_home', !empty($data->nexus_as_site_home) ? 1 : 0, 'local_nexus');
+    set_config('nexus_as_login_home', !empty($data->nexus_as_login_home) ? 1 : 0, 'local_nexus');
+    unset_config('nexus_as_home', 'local_nexus');
 
     redirect(new moodle_url('/local/nexus/hero_settings.php'), get_string('settingssaved', 'local_nexus'));
 }
@@ -92,7 +94,8 @@ $mform->set_data([
     'hero_catalog_icon' => $draftitemids['hero_catalog_icon'],
     'hero_application_icon' => $draftitemids['hero_application_icon'],
     'hero_logo' => $herologodraftitemid,
-    'nexus_as_home' => !empty($config->nexus_as_home),
+    'nexus_as_site_home' => !empty($config->nexus_as_site_home) || !empty($config->nexus_as_home),
+    'nexus_as_login_home' => !empty($config->nexus_as_login_home),
 ]);
 
 echo $OUTPUT->header();

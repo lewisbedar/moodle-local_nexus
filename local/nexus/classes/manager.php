@@ -4,6 +4,7 @@ namespace local_nexus;
 defined('MOODLE_INTERNAL') || die();
 
 use local_nexus\local\application_service;
+use local_nexus\local\application_access_service;
 use local_nexus\output\application;
 
 class manager {
@@ -19,12 +20,18 @@ class manager {
         $applications = [];
 
         foreach ($records as $record) {
+            if (!application_access_service::can_view_card($record)) {
+                continue;
+            }
+
+            $canopen = application_access_service::can_open($record);
+
             $applications[] = new application(
                 $record->name,
                 application_service::get_icon_url($record),
-                $record->url,
+                $canopen ? $record->url : '',
                 $record->description ?? '',
-                $record->visibility !== 'public',
+                !$canopen,
                 $record->version ?? '',
                 $record->status ?? 'stable',
                 $record->category ?? '',

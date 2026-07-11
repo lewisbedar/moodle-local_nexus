@@ -3,7 +3,7 @@ require_once(__DIR__ . '/../../config.php');
 
 require_login();
 $context = context_system::instance();
-require_capability('moodle/site:config', $context);
+require_capability('local/nexus:managenews', $context);
 
 $manageurl = new moodle_url('/local/nexus/manage_news.php');
 

@@ -21,3 +21,18 @@
 - Pages d’administration protégées par `moodle/site:config`.
 - Actions destructives protégées par `sesskey` et confirmation Moodle.
 - Migrations XMLDB ajoutées pour les nouveaux champs et la table des actualités.
+
+## 0.5 - 2026-07-11
+
+### Ajouté
+
+- Service central `application_access_service` pour les décisions d’accès aux applications.
+- Capacités Moodle dédiées pour l’accès adhérents, équipe/bureau et l’administration Nexus.
+- Correspondance configurable avec les cohortes Adhérents et Bureau / Équipe.
+- Tests PHPUnit couvrant les principales décisions d’accès.
+
+### Modifié
+
+- Les URLs réelles des applications réservées ne sont plus transmises aux utilisateurs non autorisés.
+- Les pages d’administration utilisent des capacités Nexus dédiées plutôt que `moodle/site:config`.
+- La redirection “Nexus page d’accueil” est séparée des paramètres d’arrivée après connexion.

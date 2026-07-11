@@ -17,7 +17,7 @@
       </div>
 
       <div class="fc-app-detail-actions">
-        <a href="{{url}}" class="btn btn-primary">{{#str}}openapplication, local_nexus{{/str}}</a>
+        {{#canopen}}<a href="{{url}}" class="btn btn-primary">{{#str}}openapplication, local_nexus{{/str}}</a>{{/canopen}}
         <a href="/applications" class="btn btn-light">{{#str}}backtoapplications, local_nexus{{/str}}</a>
       </div>
     </div>

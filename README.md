@@ -10,6 +10,7 @@ Il transforme Moodle en portail applicatif Flux Croisés sans modifier le cœur 
 - Fiches d’applications (`/local/nexus/application.php?slug=...`).
 - Administration des applications, actualités et réglages du Hero depuis l’administration Moodle.
 - Uploads via la File API Moodle pour les logos d’applications, images du Hero et images mises en avant des actualités.
+- Contrôle d’accès centralisé pour les applications publiques, connectées, adhérents, équipe/bureau et administration.
 
 ## Styles Nexus
 
@@ -25,6 +26,20 @@ Les pages d’administration nécessitent `moodle/site:config` :
 - `/local/nexus/hero_settings.php` : réglages du Hero et option d’utilisation de Nexus comme page d’accueil/tableau de bord Moodle.
 
 Les actions destructives passent par `sesskey` et confirmation Moodle.
+
+## Contrôle d’accès
+
+Nexus Core utilise des capacités Moodle dédiées :
+
+- `local/nexus:viewmemberapps` : accès aux applications réservées aux adhérents.
+- `local/nexus:viewstaffapps` : accès aux applications réservées à l’équipe ou au bureau.
+- `local/nexus:manageapps` : gestion des applications.
+- `local/nexus:managenews` : gestion des actualités.
+- `local/nexus:managehero` : réglages du Hero et paramètres Nexus.
+
+Les cohortes “Adhérents” et “Bureau / Équipe” sont configurables dans les réglages Nexus Core. Les identifiants de cohortes ne sont pas codés en dur.
+
+Les URLs réelles des applications réservées ne sont pas transmises aux utilisateurs non autorisés.
 
 ## Fichiers et médias
 

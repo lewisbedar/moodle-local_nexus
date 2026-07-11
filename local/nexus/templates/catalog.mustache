@@ -46,9 +46,16 @@
                   {{^locked}}{{#str}}publicaccess, local_nexus{{/str}}{{/locked}}
                 </span>
 
-                <a href="/applications/{{slug}}" class="btn btn-primary fc-app-button">
-                  {{#str}}discover, local_nexus{{/str}}
-                </a>
+                {{#canopen}}
+                  <a href="/applications/{{slug}}" class="btn btn-primary fc-app-button">
+                    {{#str}}discover, local_nexus{{/str}}
+                  </a>
+                {{/canopen}}
+                {{^canopen}}
+                  <span class="btn btn-light fc-app-button fc-app-button-disabled">
+                    {{#str}}lockedapplication, local_nexus{{/str}}
+                  </span>
+                {{/canopen}}
               </div>
             </article>
           {{/applications}}

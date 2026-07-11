@@ -8,8 +8,6 @@ function local_nexus_pluginfile($course, $cm, $context, $filearea, $args, $force
         return false;
     }
 
-    require_login();
-
     $itemid = array_shift($args);
     $filename = array_pop($args);
 
@@ -23,6 +21,19 @@ function local_nexus_pluginfile($course, $cm, $context, $filearea, $args, $force
 
     if (!$file || $file->is_directory()) {
         return false;
+    }
+
+    if ($filearea === 'appicon') {
+        global $DB;
+
+        $application = $DB->get_record('local_nexus_applications', [
+            'id' => (int) $itemid,
+            'enabled' => 1,
+        ]);
+
+        if (!$application || !\local_nexus\local\application_access_service::can_view_card($application)) {
+            return false;
+        }
     }
 
     send_stored_file($file, 0, 0, $forcedownload, $options);
@@ -50,15 +61,10 @@ function local_nexus_redirect_home_requests(): void {
 
     $config = get_config('local_nexus');
 
-    if (empty($config->nexus_as_home)) {
-        return;
-    }
-
     $scriptfile = $_SERVER['SCRIPT_FILENAME'] ?? '';
     $frontpage = $CFG->dirroot . '/index.php';
-    $dashboard = $CFG->dirroot . '/my/index.php';
 
-    if ($scriptfile === $frontpage || $scriptfile === $dashboard) {
+    if ($scriptfile === $frontpage && (!empty($config->nexus_as_site_home) || !empty($config->nexus_as_home))) {
         redirect(new moodle_url('/local/nexus/index.php'));
     }
 }

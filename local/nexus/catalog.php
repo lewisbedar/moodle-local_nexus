@@ -1,8 +1,6 @@
 <?php
 require_once(__DIR__ . '/../../config.php');
 
-require_login();
-
 $context = context_system::instance();
 $selectedcategory = optional_param('category', '', PARAM_ALPHANUMEXT);
 
@@ -21,6 +19,11 @@ $apps = $DB->get_records(
 $categorygroups = [];
 
 foreach ($apps as $app) {
+    if (!\local_nexus\local\application_access_service::can_view_card($app)) {
+        continue;
+    }
+
+    $canopen = \local_nexus\local\application_access_service::can_open($app);
     $categorylabel = \local_nexus\local\application_service::get_category_label($app->category ?? '');
     $categoryslug = \local_nexus\local\application_service::get_category_slug($app->category ?? '');
 
@@ -39,7 +42,7 @@ foreach ($apps as $app) {
         'slug' => $app->slug,
         'description' => format_text($app->description),
         'icon' => \local_nexus\local\application_service::get_icon_url($app),
-        'url' => $app->url,
+        'url' => $canopen ? $app->url : '',
         'visibility' => $app->visibility,
         'version' => s($app->version ?? ''),
         'status' => get_string('status_' . ($app->status ?? 'stable'), 'local_nexus'),
@@ -48,7 +51,8 @@ foreach ($apps as $app) {
         'hasversion' => !empty($app->version),
         'hascategory' => !empty($app->category),
         'hascolor' => !empty($app->color),
-        'locked' => $app->visibility !== 'public',
+        'locked' => !$canopen,
+        'canopen' => $canopen,
     ];
 }
 

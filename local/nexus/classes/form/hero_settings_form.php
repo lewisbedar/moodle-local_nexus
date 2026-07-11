@@ -65,8 +65,11 @@ class hero_settings_form extends \moodleform {
             \local_nexus\local\hero_service::filemanager_options()
         );
 
-        $mform->addElement('advcheckbox', 'nexus_as_home', get_string('nexusashome', 'local_nexus'));
-        $mform->setDefault('nexus_as_home', 0);
+        $mform->addElement('advcheckbox', 'nexus_as_site_home', get_string('nexusassitehome', 'local_nexus'));
+        $mform->setDefault('nexus_as_site_home', 0);
+
+        $mform->addElement('advcheckbox', 'nexus_as_login_home', get_string('nexusasloginhome', 'local_nexus'));
+        $mform->setDefault('nexus_as_login_home', 0);
 
         $this->add_action_buttons(false, get_string('savechanges'));
     }

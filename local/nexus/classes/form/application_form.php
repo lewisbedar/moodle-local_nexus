@@ -41,11 +41,12 @@ class application_form extends \moodleform {
         $mform->setType('url', PARAM_URL);
         $mform->addRule('url', null, 'required');
 
-        $mform->addElement('select', 'visibility', get_string('visibility', 'local_nexus'), [
-            'public' => get_string('visibility_public', 'local_nexus'),
-            'members' => get_string('visibility_members', 'local_nexus'),
-            'admin' => get_string('visibility_admin', 'local_nexus')
-        ]);
+        $mform->addElement(
+            'select',
+            'visibility',
+            get_string('visibility', 'local_nexus'),
+            \local_nexus\local\application_access_service::visibility_options()
+        );
         $mform->setDefault('visibility', 'public');
 
         $mform->addElement('text', 'version', get_string('version', 'local_nexus'));

@@ -5,10 +5,18 @@
 
   <div class="fc-dock" data-nexus-dock>
     {{#applications}}
-      <a href="{{url}}" class="fc-dock-item {{#locked}}fc-locked{{/locked}}" title="{{description}}">
-        <img src="{{icon}}" alt="">
-        <span>{{name}}</span>
-      </a>
+      {{#locked}}
+        <span class="fc-dock-item fc-locked" title="{{description}}">
+          <img src="{{icon}}" alt="">
+          <span>{{name}}</span>
+        </span>
+      {{/locked}}
+      {{^locked}}
+        <a href="{{url}}" class="fc-dock-item" title="{{description}}">
+          <img src="{{icon}}" alt="">
+          <span>{{name}}</span>
+        </a>
+      {{/locked}}
     {{/applications}}
   </div>
 
