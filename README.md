@@ -11,6 +11,7 @@ Il transforme Moodle en portail applicatif Flux Croisés sans modifier le cœur 
 - Administration des applications, actualités et réglages du Hero depuis l’administration Moodle.
 - Uploads via la File API Moodle pour les logos d’applications, images du Hero et images mises en avant des actualités.
 - Contrôle d’accès centralisé pour les applications publiques, connectées, adhérents, équipe/bureau et administration.
+- Composition administrable de l’accueil via un premier moteur de widgets (`hero`, `dock`, `applications`, `courses`, `news`).
 
 ## Styles Nexus
 
@@ -40,6 +41,27 @@ Nexus Core utilise des capacités Moodle dédiées :
 Les cohortes “Adhérents” et “Bureau / Équipe” sont configurables dans les réglages Nexus Core. Les identifiants de cohortes ne sont pas codés en dur.
 
 Les URLs réelles des applications réservées ne sont pas transmises aux utilisateurs non autorisés.
+
+## Widgets de la page d’accueil
+
+La composition de l’accueil est configurée dans `/local/nexus/homepage_settings.php`.
+La configuration est stockée dans la configuration du plugin Moodle, sans table CMS dédiée.
+
+Chaque widget implémente `local_nexus\local\widget\widget_interface` et déclare :
+
+- son identifiant technique ;
+- son nom traduit ;
+- sa disponibilité pour l’utilisateur courant ;
+- ses données de template ;
+- son template Mustache.
+
+Pour ajouter un widget plus tard :
+
+1. créer une classe dans `classes/local/widget/` ;
+2. implémenter `widget_interface` ;
+3. créer le template dans `templates/widgets/` ;
+4. déclarer le widget dans `widget_registry` ;
+5. ajouter les chaînes de langue nécessaires.
 
 ## Fichiers et médias
 

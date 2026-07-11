@@ -42,6 +42,16 @@ if ($hassiteconfig) {
     $ADMIN->add(
         'localplugins',
         new admin_externalpage(
+            'local_nexus_homepage_settings',
+            get_string('homepagesettings', 'local_nexus'),
+            new moodle_url('/local/nexus/homepage_settings.php'),
+            'local/nexus:managehomepage'
+        )
+    );
+
+    $ADMIN->add(
+        'localplugins',
+        new admin_externalpage(
             'local_nexus_applications',
             get_string('manageapplications', 'local_nexus'),
             new moodle_url('/local/nexus/manage_apps.php'),

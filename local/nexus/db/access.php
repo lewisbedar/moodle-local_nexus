@@ -38,4 +38,11 @@ $capabilities = [
             'manager' => CAP_ALLOW,
         ],
     ],
+    'local/nexus:managehomepage' => [
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_SYSTEM,
+        'archetypes' => [
+            'manager' => CAP_ALLOW,
+        ],
+    ],
 ];

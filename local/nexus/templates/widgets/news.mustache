@@ -1,0 +1,19 @@
+{{#hasnews}}
+  <section class="fc-news-section">
+    <div class="fc-section-heading">
+      <p class="fc-kicker">{{#str}}nexusnews, local_nexus{{/str}}</p>
+      <h2>{{customtitle}}</h2>
+    </div>
+
+    <div class="fc-news-grid">
+      {{#news}}
+        <article class="fc-news-card">
+          {{#hasimage}}<img src="{{imageurl}}" alt="" class="fc-news-card-image">{{/hasimage}}
+          <h3>{{title}}</h3>
+          <p>{{{summary}}}</p>
+          {{#hasurl}}<a href="{{url}}">{{#str}}readmore, local_nexus{{/str}}</a>{{/hasurl}}
+        </article>
+      {{/news}}
+    </div>
+  </section>
+{{/hasnews}}

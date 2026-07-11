@@ -30,6 +30,9 @@
 - Capacités Moodle dédiées pour l’accès adhérents, équipe/bureau et l’administration Nexus.
 - Correspondance configurable avec les cohortes Adhérents et Bureau / Équipe.
 - Tests PHPUnit couvrant les principales décisions d’accès.
+- Premier moteur de widgets configurable pour composer la page d’accueil Nexus.
+- Page d’administration “Composition de l’accueil”.
+- Tests PHPUnit pour l’ordre, les widgets désactivés, les widgets indisponibles et les identifiants inconnus.
 
 ### Modifié
 

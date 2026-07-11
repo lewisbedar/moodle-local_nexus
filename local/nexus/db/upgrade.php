@@ -59,5 +59,15 @@ function xmldb_local_nexus_upgrade(int $oldversion): bool {
         upgrade_plugin_savepoint(true, 2026071100, 'local', 'nexus');
     }
 
+    if ($oldversion < 2026071101) {
+        if (get_config('local_nexus', \local_nexus\local\widget\widget_manager::CONFIG_KEY) === false) {
+            \local_nexus\local\widget\widget_manager::save_config(
+                \local_nexus\local\widget\widget_manager::default_config()
+            );
+        }
+
+        upgrade_plugin_savepoint(true, 2026071101, 'local', 'nexus');
+    }
+
     return true;
 }

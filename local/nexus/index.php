@@ -15,8 +15,8 @@ $PAGE->requires->js(new moodle_url('/local/nexus/dock.js'));
 echo $OUTPUT->header();
 
 echo $OUTPUT->render_from_template(
-    'local_nexus/dashboard',
-    (new \local_nexus\output\dashboard())->export_for_template($OUTPUT)
+    'local_nexus/homepage',
+    (new \local_nexus\output\homepage())->export_for_template($OUTPUT)
 );
 
 echo $OUTPUT->footer();

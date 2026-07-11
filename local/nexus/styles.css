@@ -20,6 +20,18 @@
   padding: 1rem 0 3rem;
 }
 
+.fc-homepage-widgets,
+.fc-homepage-widget {
+  min-width: 0;
+}
+
+.fc-section-heading-actions {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
 .fc-hero,
 .fc-app-detail-hero {
   background:
