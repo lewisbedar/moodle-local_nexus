@@ -1,5 +1,9 @@
 <section class="fc-dock-wrap">
-  <div class="fc-dock">
+  {{#hasdockcontrols}}
+    <button type="button" class="fc-dock-arrow fc-dock-arrow-prev" data-nexus-dock-prev aria-label="{{#str}}dockprevious, local_nexus{{/str}}">‹</button>
+  {{/hasdockcontrols}}
+
+  <div class="fc-dock" data-nexus-dock>
     {{#applications}}
       <a href="{{url}}" class="fc-dock-item {{#locked}}fc-locked{{/locked}}" title="{{description}}">
         <img src="{{icon}}" alt="">
@@ -7,4 +11,8 @@
       </a>
     {{/applications}}
   </div>
+
+  {{#hasdockcontrols}}
+    <button type="button" class="fc-dock-arrow fc-dock-arrow-next" data-nexus-dock-next aria-label="{{#str}}docknext, local_nexus{{/str}}">›</button>
+  {{/hasdockcontrols}}
 </section>

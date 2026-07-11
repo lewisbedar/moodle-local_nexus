@@ -77,6 +77,7 @@ class dashboard implements renderable, templatable {
             'hero' => $hero,
             'user' => $user,
             'applications' => $apps,
+            'hasdockcontrols' => count($apps) > 5,
             'courses' => $courses,
             'hascourses' => !empty($courses),
             'news' => $newsitems,
