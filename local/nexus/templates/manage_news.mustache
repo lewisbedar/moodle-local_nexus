@@ -1,0 +1,36 @@
+<div class="local-nexus-manage-apps">
+  <p>
+    <a href="{{addurl}}" class="btn btn-primary mb-3">{{#str}}addnews, local_nexus{{/str}}</a>
+  </p>
+
+  <div class="table-responsive">
+    <table class="table generaltable">
+      <thead>
+        <tr>
+          <th scope="col">{{#str}}newstitle, local_nexus{{/str}}</th>
+          <th scope="col">{{#str}}featuredimage, local_nexus{{/str}}</th>
+          <th scope="col">{{#str}}newssummary, local_nexus{{/str}}</th>
+          <th scope="col">{{#str}}sortorder, local_nexus{{/str}}</th>
+          <th scope="col">{{#str}}published, local_nexus{{/str}}</th>
+          <th scope="col">{{#str}}actions{{/str}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#news}}
+          <tr>
+            <td>{{title}}</td>
+            <td>{{#hasimage}}<img src="{{imageurl}}" alt="" class="local-nexus-news-thumb">{{/hasimage}}</td>
+            <td>{{{summary}}}</td>
+            <td>{{sortorder}}</td>
+            <td>{{publishedlabel}}</td>
+            <td>
+              <a href="{{editurl}}">{{#str}}edit{{/str}}</a>
+              <span aria-hidden="true"> | </span>
+              <a href="{{deleteurl}}">{{#str}}delete{{/str}}</a>
+            </td>
+          </tr>
+        {{/news}}
+      </tbody>
+    </table>
+  </div>
+</div>

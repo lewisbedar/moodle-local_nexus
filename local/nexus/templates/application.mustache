@@ -1,37 +1,66 @@
 <div class="fc-dashboard">
 
   <section class="fc-app-detail-hero">
+    {{#hero.hasicon}}<img src="{{hero.iconurl}}" alt="" class="fc-hero-watermark">{{/hero.hasicon}}
     <div class="fc-app-detail-icon">
       <img src="{{icon}}" alt="">
     </div>
 
     <div class="fc-app-detail-content">
-      <p class="fc-kicker">Application Flux Croisés</p>
       <h1>{{name}}</h1>
       <p>{{{description}}}</p>
 
+      <div class="fc-app-detail-badges">
+        <span class="fc-app-badge">{{accesslabel}}</span>
+        <span class="fc-app-badge fc-app-badge-muted">{{status}}</span>
+        {{#hascategory}}<span class="fc-app-badge fc-app-badge-muted">{{category}}</span>{{/hascategory}}
+      </div>
+
       <div class="fc-app-detail-actions">
-        <a href="{{url}}" class="btn btn-primary">Ouvrir l’application</a>
-        <a href="/applications" class="btn btn-light">Retour aux applications</a>
+        {{#canopen}}<a href="{{url}}" class="btn btn-primary">{{#str}}openapplication, local_nexus{{/str}}</a>{{/canopen}}
+        <a href="/applications" class="btn btn-light">{{#str}}backtoapplications, local_nexus{{/str}}</a>
       </div>
     </div>
+    {{#hero.haslogo}}<img src="{{hero.logourl}}" alt="" class="fc-hero-logo">{{/hero.haslogo}}
   </section>
 
-  <section class="fc-cards">
-    <div class="fc-card">
-      <strong>Statut</strong>
-      <span>{{#locked}}Accès réservé{{/locked}}{{^locked}}Public{{/locked}}</span>
+  <section class="fc-app-detail-layout">
+    <div class="fc-app-detail-main">
+      <section class="fc-detail-panel">
+        <p class="fc-kicker">{{#str}}overview, local_nexus{{/str}}</p>
+        <h2>{{#str}}applicationoverview, local_nexus{{/str}}</h2>
+        <p>{{{description}}}</p>
+      </section>
+
+      <section class="fc-detail-panel">
+        <p class="fc-kicker">{{#str}}resources, local_nexus{{/str}}</p>
+        <h2>{{#str}}documentationandsupport, local_nexus{{/str}}</h2>
+        <div class="fc-detail-resource-list">
+          <div class="fc-detail-resource">
+            <strong>{{#str}}documentation, local_nexus{{/str}}</strong>
+            <span>{{#str}}documentationplaceholder, local_nexus{{/str}}</span>
+          </div>
+          <div class="fc-detail-resource">
+            <strong>{{#str}}support, local_nexus{{/str}}</strong>
+            <span>{{#str}}supportplaceholder, local_nexus{{/str}}</span>
+          </div>
+        </div>
+      </section>
     </div>
 
-    <div class="fc-card">
-      <strong>Documentation</strong>
-      <span>Guides, tutoriels et aide à venir.</span>
-    </div>
-
-    <div class="fc-card">
-      <strong>Support</strong>
-      <span>Besoin d’aide ? Consultez les ressources Flux Croisés.</span>
-    </div>
+    <aside class="fc-app-detail-sidebar">
+      <section class="fc-detail-panel">
+        <p class="fc-kicker">{{#str}}keyinformation, local_nexus{{/str}}</p>
+        <dl class="fc-detail-meta-list">
+          {{#metaitems}}
+            <div>
+              <dt>{{label}}</dt>
+              <dd>{{value}}</dd>
+            </div>
+          {{/metaitems}}
+        </dl>
+      </section>
+    </aside>
   </section>
 
 </div>

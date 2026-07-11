@@ -7,8 +7,10 @@ $context = context_system::instance();
 
 $PAGE->set_context($context);
 $PAGE->set_url(new moodle_url('/local/nexus/index.php'));
-$PAGE->set_title('Nexus');
-$PAGE->set_heading('Nexus');
+$PAGE->set_title(get_string('dashboard', 'local_nexus'));
+$PAGE->set_heading(get_string('dashboard', 'local_nexus'));
+$PAGE->requires->css(new moodle_url('/local/nexus/styles.css'));
+$PAGE->requires->js(new moodle_url('/local/nexus/dock.js'));
 
 echo $OUTPUT->header();
 
